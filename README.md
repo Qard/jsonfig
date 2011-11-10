@@ -1,30 +1,30 @@
-# Fig
-Fig makes it dead easy to manage a folder full of json config files your app depends on.
+# JSONFig
+JSONFig makes it dead easy to manage a folder full of json config files your app depends on.
 
 ## Requirements
 * Node.js 0.4+
 
 ## Install
 
-    npm install fig
+    npm install jsonfig
 
 ## Usage
 
-    fig.env('production').load(__dirname+'/config', function (conf) {
+    jsonfig.env('production').load(__dirname+'/config', function (conf) {
       console.log(conf.get('redis.host'))
     })
 
-#### fig.env(name)
+#### jsonfig.env(name)
 Sets the environment name to scope to in your json configs, if available.
 
-#### fig.path(path)
+#### jsonfig.path(path)
 Sets the folder to load json configs. NOTE: sub directories aren't supported yet. I'll deal with that later.
 
-#### fig.load([path], callback)
-This tells fig to start loading the json files and run the callback when it's complete. The callback takes two arguments (err, conf)
+#### jsonfig.load([path], callback)
+This tells jsonfig to start loading the json files and run the callback when it's complete. The callback takes two arguments (err, conf)
 
 #### conf.get(path)
-As a little bonus, the conf object passed into the fig.load() callback includes a handy little helper for searching for values using a dot-path string. For example; conf.get('redis.host')
+As a little bonus, the conf object passed into the jsonfig.load() callback includes a handy little helper for searching for values using a dot-path string. For example; conf.get('redis.host')
 
 ---
 
