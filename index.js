@@ -4,18 +4,9 @@
  * TODO: Support subdirectories
  */
 // Load dependencies.
-var p = require('path'), fs = require('fs')
-
-// Adds dot-path location to ordinary objects.
-function Obj (o) {
-  for (var p in o) {
-    this[p] = (typeof o[p] === 'object') ? new Obj(o[p]) : o[p]
-  }
-}
-Obj.prototype.get = function (p) {
-  var o = p.split('.').reduce(function (obj, i) { return obj[i] }, this)
-  return (typeof o === 'object') ? new Obj(o) : o
-}
+var p = require('path')
+  , fs = require('fs')
+  , DotPath = require('dotpath')
 
 // Copy after() from underscore,
 // since we don't need anything else.
@@ -65,7 +56,7 @@ var jsonfig = {
       function finish (err, o) {
         attempt = noop
         if (err) return cb(err)
-        cb(null, new Obj(o))
+        cb(null, new DotPath(o))
       }
 
       // Start loading files.
@@ -87,7 +78,7 @@ var jsonfig = {
 
             // Parse and insert env data or whole structure into obj.
             var json = JSON.parse(data)
-            obj[p.basename(file, '.json')] = json[self.env()] || json
+            obj[p.basename(file, '.json')] = json[self.env().toLowerCase()] || json
 
             attempt()
           })

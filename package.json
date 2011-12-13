@@ -2,13 +2,15 @@
   "author": "Stephen Belanger <admin@stephenbelanger.com> (http://stephenbelanger.com)",
   "name": "jsonfig",
   "description": "Simple json config folder manager",
-  "version": "0.0.0",
+  "version": "0.0.2",
   "repository": {
     "url": "git://github.com/Qard/jsonfig.git"
   },
   "engines": {
-    "node": "~v0.4.11"
+    "node": "~v0.4.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "dotpath":"*"
+  },
   "devDependencies": {}
 }
