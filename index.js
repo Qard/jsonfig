@@ -89,7 +89,7 @@ var jsonfig = {
 }
 
 // Add chainable masked property modifiers.
-addMProp(jsonfig, 'env', (process.env.NODE_ENV || '').toLowerCase())
+addMProp(jsonfig, 'env', (process.env.NODE_ENV || 'development').toLowerCase())
 addMProp(jsonfig, 'path', __dirname)
 
 // Export jsonfig.
