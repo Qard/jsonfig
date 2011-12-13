@@ -24,7 +24,7 @@ function addMProp (o, n, d) {
       return m
     }
     m = v
-    return this
+    return o
   }
 }
 
@@ -78,7 +78,7 @@ var jsonfig = {
 
             // Parse and insert env data or whole structure into obj.
             var json = JSON.parse(data)
-            obj[p.basename(file, '.json')] = json[self.env().toLowerCase()] || json
+            obj[p.basename(file, '.json')] = json[self.env()] || json
 
             attempt()
           })
@@ -89,7 +89,7 @@ var jsonfig = {
 }
 
 // Add chainable masked property modifiers.
-addMProp(jsonfig, 'env', 'development')
+addMProp(jsonfig, 'env', (process.env.NODE_ENV || '').toLowerCase())
 addMProp(jsonfig, 'path', __dirname)
 
 // Export jsonfig.
