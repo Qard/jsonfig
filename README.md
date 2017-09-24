@@ -1,4 +1,6 @@
 # JSONFig
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/Qard/jsonfig.svg)](https://greenkeeper.io/)
 JSONFig makes it dead easy to manage a folder full of json config files your app depends on.
 
 ## Requirements
